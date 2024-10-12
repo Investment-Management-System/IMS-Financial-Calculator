@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>财富增长预测</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>财富增长预测</h1>
+    <form id="financial-form">
+        <label for="salary">每月工资：</label>
+        <input type="number" id="salary" name="salary" required><br><br>
+
+        <label for="budget">每月开销：</label>
+        <input type="number" id="budget" name="budget" required><br><br>
+
+        <label for="returnRate">月投资回报率 (%)：</label>
+        <input type="number" id="returnRate" name="returnRate" step="0.01" required><br><br>
+
+        <button type="submit">提交</button>
+    </form>
+
+    <h2>预测结果：</h2>
+    <div id="result"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
