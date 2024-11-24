@@ -6,21 +6,15 @@ CORS(app)  # 解决跨域问题
 
 # 计算未来财富的函数
 def calculate_future_wealth(initial, investment, deposit, return_rate, time):
-    # 初始投资的增长
-    initial_wealth_future = initial * (1 + return_rate) ** time
+    monthly_wealth = []
+    current_wealth = initial
 
-    # 每月投资的增长
-    investment_future = 0
-    for i in range(time):
-        investment_future += investment * (1 + return_rate) ** (time - i - 1)
+    for month in range(time):
+        current_wealth = current_wealth * (1 + return_rate) + investment + deposit
+        monthly_wealth.append(current_wealth)
 
-    # 每月存款的累积
-    deposit_future = deposit * time
-
-    # 计算总财富
-    total_wealth = initial_wealth_future + investment_future + deposit_future
-
-    return total_wealth
+    final_wealth = current_wealth
+    return monthly_wealth, final_wealth
 
 # 定义API路由，处理前端发送的POST请求
 @app.route('/api/forecast', methods=['POST'])
@@ -43,10 +37,10 @@ def forecast():
     return_rate = float(return_rate)
     time = int(time)
 
-    future_wealth = calculate_future_wealth(initial, investment, deposit, return_rate, time)
-    return jsonify({'future_wealth': future_wealth})
+    monthly_wealth, final_wealth = calculate_future_wealth(initial, investment, deposit, return_rate, time)
+    print(f"Calculated monthly wealth: {monthly_wealth}")  # 打印计算结果
+    print(f"Final wealth after {time} months: {final_wealth}")  # 打印最终财富
+    return jsonify({'monthly_wealth': monthly_wealth, 'final_wealth': final_wealth})
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
