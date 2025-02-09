@@ -21,9 +21,9 @@
 
 ## Technologies Used
 
-- **Backend**: Python  
-- **Libraries**: Pandas, NumPy, Matplotlib, Seaborn  
-- **Development Tools**: Jupyter Notebook, Visual Studio Code  
+- **Backend**: Python, javascript, HTML/CSS
+- **Libraries**: Flask, Pandas, NumPy, Matplotlib, Chart.js  
+- **Development Tools**: Visual Studio Code  
 
 ---
 
