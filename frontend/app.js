@@ -1,5 +1,5 @@
 document.getElementById('financial-form').addEventListener('submit', function(event) {
-    event.preventDefault();  // 阻止表单默认提交行为
+    event.preventDefault();  // Prevent default form submission behavior
     updateForecast();
 });
 
@@ -9,10 +9,10 @@ function updateForecast() {
     const budget = document.getElementById('budget').value;
     const investment = document.getElementById('investment').value;
     const deposit = document.getElementById('deposit').value;
-    const returnRate = document.getElementById('returnRate').value / 100;  // 转换为小数
+    const returnRate = document.getElementById('returnRate').value / 100;  // Convert to decimal
     const time = document.getElementById('time').value;
 
-    // 通过 Fetch 向后端发送请求
+    // Send a request to the backend using Fetch
     fetch('http://127.0.0.1:5000/api/forecast', {
         method: 'POST',
         headers: {
@@ -22,19 +22,19 @@ function updateForecast() {
     })
     .then(response => response.json())
     .then(data => {
-        console.log('Received data from backend:', data);  // 打印接收到的数据
+        console.log('Received data from backend:', data);  // Print the received data
 
-        // 显示最终财富
+        // Display the final wealth
         const resultDiv = document.getElementById('result');
-        resultDiv.innerHTML = `<h2>预测结果</h2><p>${time}个月后的财富: ${data.final_wealth.toFixed(2)}</p>`;
+        resultDiv.innerHTML = `<h2>Forecast Result</h2><p>Wealth after ${time} months: ${data.final_wealth.toFixed(2)}</p>`;
 
-        // 显示预测结果
+        // Display the forecast chart
         const ctx = document.getElementById('resultChart').getContext('2d');
         if (window.myChart) {
             window.myChart.destroy();
         }
         window.myChart = new Chart(ctx, {
-            type: 'bar',  // 将图表类型改为柱状图
+            type: 'bar',  // Change the chart type to bar chart
             data: {
                 labels: Array.from({length: data.monthly_wealth.length}, (_, i) => i + 1),
                 datasets: [{
@@ -66,7 +66,7 @@ function updateForecast() {
     .catch(error => console.error('Error:', error));
 }
 
-// 更新滑动条的值显示并调用更新函数
+// Update the value of input and slider and call the update function
 function syncInputAndSlider(inputId, sliderId) {
     document.getElementById(sliderId).addEventListener('input', function() {
         document.getElementById(inputId).value = this.value;

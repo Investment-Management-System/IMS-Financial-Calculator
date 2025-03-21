@@ -1,12 +1,49 @@
+<!-- 
+This is the HTML file for the frontend of the Personal Financial Forecast application.
+It contains the structure and layout of the user interface.
+
+This file includes the following elements:
+- Document type declaration
+- HTML root element
+- Head section containing metadata and external resources
+- Body section containing the main content of the page
+
+The head section includes:
+- Character encoding declaration
+- Viewport meta tag for responsive design
+- Page title
+- External CSS stylesheet for normalization and skeleton framework
+- External JavaScript library for chart visualization
+- Internal CSS styles for custom styling
+
+The body section includes:
+- Heading element for the application title
+- Form element for user input
+- Slider containers for various financial parameters
+- Slider labels and input fields for user input
+- Submit button for form submission
+- Result container for displaying financial forecast results
+- Canvas element for displaying financial forecast charts
+- External JavaScript file for handling form submission and chart visualization
+
+This file is part of the Personal Financial Forecast application, which allows users to forecast their wealth growth based on various financial parameters.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Set character encoding -->
     <meta charset="UTF-8">
+    <!-- Set viewport meta tag for responsive design -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>财富增长预测</title>
+    <!-- Page title -->
+    <title>Wealth Growth Forecast</title>
+    <!-- Include external CSS stylesheet for normalization and skeleton framework -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <!-- Include external JavaScript library for chart visualization -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Internal CSS styles for custom styling -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,78 +72,90 @@
             justify-content: space-between;
         }
         .result-large {
-            font-size: 1.5em; /* 调整字体大小 */
-            font-weight: bold; /* 加粗字体 */
+            font-size: 1.5em;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <h1>财富增长预测</h1>
+    <!-- Application title -->
+    <h1>Wealth Growth Forecast</h1>
 
     <form id="financial-form">
+        <!-- Initial investment amount -->
         <div class="slider-container">
             <div class="slider-label">
-                <label for="initial">初始投资金额：</label>
+                <label for="initial">Initial Investment Amount:</label>
                 <input type="number" id="initial-input" name="initial-input" min="0" max="100000" value="1000">
             </div>
             <input type="range" id="initial" name="initial" min="0" max="100000" value="1000">
         </div>
 
+        <!-- Monthly income -->
         <div class="slider-container">
             <div class="slider-label">
-                <label for="salary">月收入：</label>
+                <label for="salary">Monthly Income:</label>
                 <input type="number" id="salary-input" name="salary-input" min="0" max="100000" value="5000">
             </div>
             <input type="range" id="salary" name="salary" min="0" max="100000" value="5000">
         </div>
 
+        <!-- Monthly budget -->
         <div class="slider-container">
             <div class="slider-label">
-                <label for="budget">月开销预算：</label>
+                <label for="budget">Monthly Budget:</label>
                 <input type="number" id="budget-input" name="budget-input" min="0" max="100000" value="2000">
             </div>
             <input type="range" id="budget" name="budget" min="0" max="100000" value="2000">
         </div>
 
+        <!-- Monthly investment budget -->
         <div class="slider-container">
             <div class="slider-label">
-                <label for="investment">月投资预算：</label>
+                <label for="investment">Monthly Investment Budget:</label>
                 <input type="number" id="investment-input" name="investment-input" min="0" max="1000" value="100">
             </div>
             <input type="range" id="investment" name="investment" min="0" max="1000" value="100">
         </div>
 
+        <!-- Monthly deposit -->
         <div class="slider-container">
             <div class="slider-label">
-                <label for="deposit">月存款：</label>
+                <label for="deposit">Monthly Deposit:</label>
                 <input type="number" id="deposit-input" name="deposit-input" min="0" max="1000" value="100">
             </div>
             <input type="range" id="deposit" name="deposit" min="0" max="1000" value="100">
         </div>
 
+        <!-- Monthly investment return rate -->
         <div class="slider-container">
             <div class="slider-label">
-                <label for="returnRate">月投资回报率 (%)：</label>
+                <label for="returnRate">Monthly Investment Return Rate (%):</label>
                 <input type="number" id="returnRate-input" name="returnRate-input" min="0" max="10" step="0.1" value="2">
             </div>
             <input type="range" id="returnRate" name="returnRate" min="0" max="10" step="0.1" value="2">
         </div>
 
+        <!-- Forecast duration -->
         <div class="slider-container">
             <div class="slider-label">
-                <label for="time">预测时长 (月)：</label>
+                <label for="time">Forecast Duration (months):</label>
                 <input type="number" id="time-input" name="time-input" min="1" max="120" value="10">
             </div>
             <input type="range" id="time" name="time" min="1" max="120" value="10">
         </div>
         
-        <button type="submit">提交</button>
+        <!-- Submit button -->
+        <button type="submit">Submit</button>
     </form>
 
+    <!-- Result container for displaying financial forecast results -->
     <div id="result" class="result-large"></div>
 
+    <!-- Canvas element for displaying financial forecast charts -->
     <canvas id="resultChart" width="400" height="200"></canvas>
 
+    <!-- External JavaScript file for handling form submission and chart visualization -->
     <script src="app.js"></script>
 </body>
 </html>
