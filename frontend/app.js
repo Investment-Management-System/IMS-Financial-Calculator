@@ -13,7 +13,7 @@ function updateForecast() {
     const time = document.getElementById('time').value;
 
     // Send a request to the backend using Fetch
-    fetch('https://ims-financial-calculator.vercel.app//api/forecast', {
+    fetch('https://ims-backend-yyqt.onrender.com//api/forecast', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
