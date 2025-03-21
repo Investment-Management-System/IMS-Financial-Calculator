@@ -43,4 +43,4 @@ def forecast():
     return jsonify({'monthly_wealth': monthly_wealth, 'final_wealth': final_wealth})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
